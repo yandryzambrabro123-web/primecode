@@ -63,14 +63,14 @@ a{text-decoration:none;color:inherit}
 .hero-video-wrap{
   position:absolute;inset:0;z-index:0;
 }
-.hero-video-wrap iframe{
+.hero-video-wrap video{
   position:absolute;
   top:50%;left:50%;
   width:177.78vh;height:100vh;
   min-width:100%;min-height:56.25vw;
   transform:translate(-50%,-50%);
   pointer-events:none;
-  border:none;
+  object-fit:cover;
 }
 .hero-fallback{
   position:absolute;inset:0;
@@ -93,14 +93,13 @@ a{text-decoration:none;color:inherit}
 }
 #hero-canvas{position:absolute;inset:0;z-index:3;pointer-events:none}
 
-/* Hero content — at bottom */
+/* Hero content — pegado al fondo */
 .hero-c{
-  position:relative;z-index:10;
-  width:100%;max-width:860px;
-  padding:0 5% 100px;
+  position:absolute;bottom:0;left:0;right:0;z-index:10;
+  width:100%;max-width:100%;
+  padding:0 5% 80px;
   display:flex;flex-direction:column;
   align-items:center;text-align:center;
-  margin-top:8vh;
 }
 .h-tag{
   display:inline-flex;align-items:center;gap:8px;
@@ -523,12 +522,11 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
 <section id="hero">
   <div class="hero-video-wrap">
     <div class="hero-fallback"></div>
-    <iframe
-      src="https://player.cloudinary.com/embed/?cloud_name=dx4j0qpy8&public_id=hero_tg9lxi&autoplay=true&muted=true&loop=true&controls=false&background=true&autoplay_on_load=true&quality=auto"
-      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-      allowfullscreen
-      frameborder="0">
-    </iframe>
+    <video
+      src="https://res.cloudinary.com/dx4j0qpy8/video/upload/q_auto,f_auto/hero_tg9lxi.mp4"
+      autoplay muted loop playsinline
+      preload="auto">
+    </video>
   </div>
   <div class="hero-ov"></div>
   <div class="hero-vignette"></div>
