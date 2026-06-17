@@ -53,9 +53,15 @@ a{text-decoration:none;color:inherit}
 
 /* ── HERO ─────────────────────────────── */
 #hero{
-  position:relative;width:100%;height:100vh;
+  position:relative;width:100%;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+.hero-video-section{
+  position:relative;
+  width:100%;
+  height:100vh;
   overflow:hidden;
 }
 
@@ -63,14 +69,14 @@ a{text-decoration:none;color:inherit}
 .hero-video-wrap{
   position:absolute;inset:0;z-index:0;
 }
-.hero-video-wrap video{
+.hero-video-wrap iframe{
   position:absolute;
   top:50%;left:50%;
   width:177.78vh;height:100vh;
   min-width:100%;min-height:56.25vw;
   transform:translate(-50%,-50%);
   pointer-events:none;
-  object-fit:cover;
+  border:none;
 }
 .hero-fallback{
   position:absolute;inset:0;
@@ -93,13 +99,14 @@ a{text-decoration:none;color:inherit}
 }
 #hero-canvas{position:absolute;inset:0;z-index:3;pointer-events:none}
 
-/* Hero content — pegado al fondo */
+/* Hero content — at bottom */
 .hero-c{
-  position:absolute;bottom:0;left:0;right:0;z-index:10;
-  width:100%;max-width:100%;
-  padding:0 5% 80px;
+  position:relative;z-index:10;
+  width:100%;max-width:900px;
+  padding:80px 5% 100px;
   display:flex;flex-direction:column;
   align-items:center;text-align:center;
+  background:linear-gradient(to bottom,#050508,#08080f);
 }
 .h-tag{
   display:inline-flex;align-items:center;gap:8px;
@@ -168,11 +175,7 @@ a{text-decoration:none;color:inherit}
 .h-ghost:hover{color:#fff;border-color:rgba(0,229,255,0.4);background:rgba(0,229,255,0.05)}
 
 /* Scroll indicator */
-.h-scroll{
-  position:absolute;bottom:32px;right:5%;z-index:10;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  opacity:0;animation:fu 0.8s ease 2s forwards;
-}
+.h-scroll{display:none}
 .h-scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,rgba(0,229,255,0.5),transparent);animation:scroll-line 1.5s ease-in-out infinite}
 @keyframes scroll-line{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .h-scroll-text{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(0,229,255,0.4);writing-mode:vertical-rl}
@@ -410,6 +413,31 @@ a{text-decoration:none;color:inherit}
 .qr-restart{font-size:0.75rem;color:rgba(240,240,255,0.3);cursor:pointer;background:none;font-family:'Montserrat',sans-serif;font-weight:600;transition:color 0.2s;text-decoration:underline}
 .qr-restart:hover{color:rgba(240,240,255,0.6)}
 
+
+/* Portfolio enhanced */
+.pc-video-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.pc-video-tag{
+  font-size:0.58rem;color:rgba(0,229,255,0.3);
+  letter-spacing:0.08em;margin-top:6px;font-weight:600;
+}
+.pc-hover-cta{
+  position:absolute;
+  bottom:16px;left:50%;transform:translateX(-50%) translateY(10px);
+  display:flex;align-items:center;gap:6px;
+  background:rgba(0,229,255,0.9);color:#000;
+  padding:8px 18px;border-radius:20px;
+  font-size:0.72rem;font-weight:800;
+  opacity:0;
+  transition:all 0.3s ease;
+  white-space:nowrap;z-index:5;
+}
+.pc:hover .pc-hover-cta{
+  opacity:1;transform:translateX(-50%) translateY(0);
+}
+
 /* ── TECH ──────────────────────────── */
 #tech{background:#050508;text-align:center}
 .tech-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:800px;margin:0 auto}
@@ -520,17 +548,20 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-video-section">
   <div class="hero-video-wrap">
     <div class="hero-fallback"></div>
-    <video
-      src="https://res.cloudinary.com/dx4j0qpy8/video/upload/q_auto,f_auto/hero_tg9lxi.mp4"
-      autoplay muted loop playsinline
-      preload="auto">
-    </video>
+    <iframe
+      src="https://player.cloudinary.com/embed/?cloud_name=dx4j0qpy8&public_id=hero_tg9lxi&autoplay=true&muted=true&loop=true&controls=false&background=true&autoplay_on_load=true&quality=auto"
+      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+      allowfullscreen
+      frameborder="0">
+    </iframe>
   </div>
   <div class="hero-ov"></div>
   <div class="hero-vignette"></div>
   <canvas id="hero-canvas"></canvas>
+  </div><!-- end hero-video-section -->
 
   <div class="hero-c">
     <div class="h-tag">Agencia Digital Premium · Ecuador</div>
@@ -552,10 +583,7 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
     </div>
   </div>
 
-  <div class="h-scroll">
-    <div class="h-scroll-text">scroll</div>
-    <div class="h-scroll-line"></div>
-  </div>
+
 </section>
 
 <!-- TICKER -->
@@ -669,236 +697,145 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
   <div class="sec-in">
     <div class="ey rv">Portafolio</div>
     <h2 class="st rv d1">Proyectos que<br><em>hablan solos.</em></h2>
-    <p class="ss rv d2">Webs reales entregadas a clientes reales en Ecuador y LATAM.</p>
+    <p class="ss rv d2">Webs reales entregadas a clientes reales en Ecuador y LATAM. Hover para explorar.</p>
     <div class="port-grid">
-      <a href="https://benderam.com" target="_blank" class="pc pc-1 rv d1">
-        <div class="pc-prev"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="pc-domain">benderam.com</div></div><span class="pc-chip">Red de Apuestas</span></div>
-        <div class="pc-info"><div class="pc-name">Benderam</div><div class="pc-url">benderam.com</div></div>
-      </a>
-      <a href="https://www.agenciadiablitobet.com" target="_blank" class="pc pc-2 rv d2">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#0f0510,#180518)"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="pc-domain">agenciadiablitobet.com</div></div><span class="pc-chip">Landing Page</span></div>
+
+      <!-- BENDERAM - BIG -->
+      <div class="pc pc-1 rv d1" data-url="https://benderam.com">
+        <div class="pc-prev" id="prev-benderam">
+          <div class="pc-glow"></div>
+          <!-- Video placeholder - reemplazar src con video real -->
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
+              <div class="pc-domain">benderam.com</div>
+              <div class="pc-video-tag">+ Video próximamente</div>
+            </div>
+          </div>
+          <span class="pc-chip">Red de Apuestas</span>
+          <div class="pc-hover-cta">
+            <span>Visitar sitio</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+        </div>
+        <div class="pc-info">
+          <div class="pc-name">Benderam</div>
+          <div class="pc-url">benderam.com</div>
+        </div>
+      </div>
+
+      <!-- DIABLITOBET -->
+      <div class="pc pc-2 rv d2" data-url="https://www.agenciadiablitobet.com">
+        <div class="pc-prev" style="background:linear-gradient(135deg,#0f0510,#180518)">
+          <div class="pc-glow"></div>
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              <div class="pc-domain">agenciadiablitobet.com</div>
+            </div>
+          </div>
+          <span class="pc-chip">Landing Page</span>
+          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        </div>
         <div class="pc-info"><div class="pc-name">DiablitoBet</div><div class="pc-url">agenciadiablitobet.com</div></div>
-      </a>
-      <a href="https://www.djfranzofficial.com" target="_blank" class="pc pc-3 rv d3">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080810,#101018)"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg></div><div class="pc-domain">djfranzofficial.com</div></div><span class="pc-chip">Artístico</span></div>
+      </div>
+
+      <!-- DJ FRANZ -->
+      <div class="pc pc-3 rv d3" data-url="https://www.djfranzofficial.com">
+        <div class="pc-prev" style="background:linear-gradient(135deg,#080810,#101018)">
+          <div class="pc-glow"></div>
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg></div>
+              <div class="pc-domain">djfranzofficial.com</div>
+            </div>
+          </div>
+          <span class="pc-chip">Artístico</span>
+          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        </div>
         <div class="pc-info"><div class="pc-name">DJ Franz Official</div><div class="pc-url">djfranzofficial.com</div></div>
-      </a>
-      <a href="https://www.proyectosolidaridadec.com" target="_blank" class="pc pc-4 rv d4">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080f0a,#0f1810)"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><div class="pc-domain">proyectosolidaridadec.com</div></div><span class="pc-chip">Plataforma</span></div>
+      </div>
+
+      <!-- PROYECTO SOLIDARIO -->
+      <div class="pc pc-4 rv d4" data-url="https://www.proyectosolidaridadec.com">
+        <div class="pc-prev" style="background:linear-gradient(135deg,#080f0a,#0f1810)">
+          <div class="pc-glow"></div>
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+              <div class="pc-domain">proyectosolidaridadec.com</div>
+            </div>
+          </div>
+          <span class="pc-chip">Plataforma</span>
+          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        </div>
         <div class="pc-info"><div class="pc-name">Proyecto Solidario EC</div><div class="pc-url">proyectosolidaridadec.com</div></div>
-      </a>
-      <a href="https://www.daulebet.com" target="_blank" class="pc pc-5 rv d5">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#0a0508,#160a10)"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="pc-domain">daulebet.com</div></div><span class="pc-chip">Apuestas</span></div>
+      </div>
+
+      <!-- DAULEBET -->
+      <div class="pc pc-5 rv d5" data-url="https://www.daulebet.com">
+        <div class="pc-prev" style="background:linear-gradient(135deg,#0a0508,#160a10)">
+          <div class="pc-glow"></div>
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+              <div class="pc-domain">daulebet.com</div>
+            </div>
+          </div>
+          <span class="pc-chip">Apuestas</span>
+          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        </div>
         <div class="pc-info"><div class="pc-name">DauleBet</div><div class="pc-url">daulebet.com</div></div>
-      </a>
-      <a href="https://bahia-solutions-opal.vercel.app/" target="_blank" class="pc pc-6 rv d1">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080810,#101018)"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div><div class="pc-domain">bahia-solutions</div></div><span class="pc-chip">Legal</span></div>
+      </div>
+
+      <!-- BAHIA -->
+      <div class="pc pc-6 rv d1" data-url="https://bahia-solutions-opal.vercel.app/">
+        <div class="pc-prev" style="background:linear-gradient(135deg,#080810,#101018)">
+          <div class="pc-glow"></div>
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+              <div class="pc-domain">bahia-solutions</div>
+            </div>
+          </div>
+          <span class="pc-chip">Legal</span>
+          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        </div>
         <div class="pc-info"><div class="pc-name">Bahia Solutions</div><div class="pc-url">bahia-solutions.vercel.app</div></div>
-      </a>
-      <a href="https://www.angeomovil.online" target="_blank" class="pc pc-7 rv d2">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#050a10,#0a1018)"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="pc-domain">angeomovil.online</div></div><span class="pc-chip">Digital</span></div>
+      </div>
+
+      <!-- ANGEOMOVIL -->
+      <div class="pc pc-7 rv d2" data-url="https://www.angeomovil.online">
+        <div class="pc-prev" style="background:linear-gradient(135deg,#050a10,#0a1018)">
+          <div class="pc-glow"></div>
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+              <div class="pc-domain">angeomovil.online</div>
+            </div>
+          </div>
+          <span class="pc-chip">Digital</span>
+          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        </div>
         <div class="pc-info"><div class="pc-name">Angeomovil</div><div class="pc-url">angeomovil.online</div></div>
-      </a>
-      <a href="https://www.maxinverso.com" target="_blank" class="pc pc-8 rv d3">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080a05,#101505)"><div class="pc-glow"></div><div class="pc-icon-wrap"><div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div class="pc-domain">maxinverso.com</div></div><span class="pc-chip">Finanzas</span></div>
+      </div>
+
+      <!-- MAX INVERSO -->
+      <div class="pc pc-8 rv d3" data-url="https://www.maxinverso.com">
+        <div class="pc-prev" style="background:linear-gradient(135deg,#080a05,#101505)">
+          <div class="pc-glow"></div>
+          <div class="pc-video-placeholder">
+            <div class="pc-icon-wrap">
+              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+              <div class="pc-domain">maxinverso.com</div>
+            </div>
+          </div>
+          <span class="pc-chip">Finanzas</span>
+          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        </div>
         <div class="pc-info"><div class="pc-name">Max Inverso</div><div class="pc-url">maxinverso.com</div></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- QUIZ -->
-<div class="div"></div>
-<section id="quiz" class="sec">
-  <div class="sec-in">
-    <div class="ey rv">Descubre tu web ideal</div>
-    <h2 class="st rv d1">¿Qué tipo de web<br><em>necesitas?</em></h2>
-    <p class="ss rv d2">Responde 4 preguntas y te decimos exactamente qué web se adapta a tu negocio y por qué.</p>
-    <div class="quiz-wrap rv d3">
-      <!-- LEFT: Quiz -->
-      <div class="quiz-left">
-        <div class="quiz-prog" id="quiz-prog">
-          <div class="quiz-prog-dot active"></div>
-          <div class="quiz-prog-dot"></div>
-          <div class="quiz-prog-dot"></div>
-          <div class="quiz-prog-dot"></div>
-        </div>
-
-        <!-- Q1 -->
-        <div class="quiz-step" id="q1">
-          <div class="quiz-q-label">Pregunta 1 de 4</div>
-          <div class="quiz-q-text">¿Cuál es el objetivo principal de tu negocio online?</div>
-          <div class="quiz-opts">
-            <button class="quiz-opt" onclick="selectOpt(this,'q1','leads')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Conseguir clientes / leads</span><span class="quiz-opt-sub">Quiero que la gente me contacte o agende</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q1','sell')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Vender productos online</span><span class="quiz-opt-sub">Tengo productos físicos o digitales para vender</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q1','info')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Mostrar mi marca / empresa</span><span class="quiz-opt-sub">Quiero presencia profesional y credibilidad</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q1','book')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Gestionar reservas / citas</span><span class="quiz-opt-sub">Necesito que los clientes agenden en línea</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-          </div>
-          <div class="quiz-nav">
-            <span></span>
-            <button class="quiz-next" id="q1-next" onclick="nextQ(1)" disabled>Siguiente →</button>
-          </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="quiz-step" id="q2" style="display:none">
-          <div class="quiz-q-label">Pregunta 2 de 4</div>
-          <div class="quiz-q-text">¿Cuánto contenido necesitas mostrar?</div>
-          <div class="quiz-opts">
-            <button class="quiz-opt" onclick="selectOpt(this,'q2','one')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Una sola página impactante</span><span class="quiz-opt-sub">Todo en un scroll, directo al grano</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q2','multi')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Varias secciones / páginas</span><span class="quiz-opt-sub">Servicios, sobre nosotros, blog, contacto</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q2','catalog')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Catálogo grande de productos</span><span class="quiz-opt-sub">Muchos productos con filtros y búsqueda</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-          </div>
-          <div class="quiz-nav">
-            <button class="quiz-back" onclick="backQ(1)">← Atrás</button>
-            <button class="quiz-next" id="q2-next" onclick="nextQ(2)" disabled>Siguiente →</button>
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="quiz-step" id="q3" style="display:none">
-          <div class="quiz-q-label">Pregunta 3 de 4</div>
-          <div class="quiz-q-text">¿Los clientes necesitan pagar o registrarse en tu web?</div>
-          <div class="quiz-opts">
-            <button class="quiz-opt" onclick="selectOpt(this,'q3','no')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">No, solo contacto / WhatsApp</span><span class="quiz-opt-sub">El cierre de venta es fuera de la web</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q3','pay')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Sí, pago online</span><span class="quiz-opt-sub">Tarjeta, transferencia o pasarela de pagos</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q3','register')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Registro de usuarios / membresía</span><span class="quiz-opt-sub">Los clientes crean cuentas y acceden a contenido</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-          </div>
-          <div class="quiz-nav">
-            <button class="quiz-back" onclick="backQ(2)">← Atrás</button>
-            <button class="quiz-next" id="q3-next" onclick="nextQ(3)" disabled>Siguiente →</button>
-          </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="quiz-step" id="q4" style="display:none">
-          <div class="quiz-q-label">Pregunta 4 de 4</div>
-          <div class="quiz-q-text">¿En qué etapa está tu negocio?</div>
-          <div class="quiz-opts">
-            <button class="quiz-opt" onclick="selectOpt(this,'q4','new')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Empezando / lanzando</span><span class="quiz-opt-sub">Necesito presencia rápida y efectiva</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q4','growing')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">En crecimiento</span><span class="quiz-opt-sub">Ya tengo clientes, quiero escalar</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-            <button class="quiz-opt" onclick="selectOpt(this,'q4','established')">
-              <div class="quiz-opt-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
-              <div class="quiz-opt-text"><span class="quiz-opt-name">Empresa establecida</span><span class="quiz-opt-sub">Necesito renovar o mejorar mi presencia digital</span></div>
-              <div class="quiz-opt-check"></div>
-            </button>
-          </div>
-          <div class="quiz-nav">
-            <button class="quiz-back" onclick="backQ(3)">← Atrás</button>
-            <button class="quiz-next" id="q4-next" onclick="showResult()" disabled>Ver mi resultado →</button>
-          </div>
-        </div>
-
-        <!-- RESULT -->
-        <div class="quiz-result" id="quiz-result">
-          <div class="qr-badge" id="qr-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,229,255,0.5);font-weight:700">Tu web ideal es</div>
-          <div class="qr-type" id="qr-type">Landing Page</div>
-          <div class="qr-why" id="qr-why">Basado en tus respuestas, necesitas una página de conversión optimizada para captar clientes rápido.</div>
-          <div class="qr-price" id="qr-price">Inversión estimada: $800 – $1,500</div>
-          <a href="https://calendar.app.google/oHRQxSQogYH5JaTz8" target="_blank" class="qr-cta">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Quiero esta web — Agenda gratis
-          </a>
-          <button class="qr-restart" onclick="restartQuiz()">← Volver a empezar</button>
-        </div>
       </div>
 
-      <!-- RIGHT: Animated mockup -->
-      <div class="quiz-right">
-        <!-- Floating data bits -->
-        <div class="data-bit" style="top:12%;left:5%;--d:4s;--dd:0s">✓ SEO optimizado</div>
-        <div class="data-bit" style="top:20%;right:5%;--d:5s;--dd:-1s">⚡ Carga rápida</div>
-        <div class="data-bit" style="bottom:25%;left:3%;--d:6s;--dd:-2s">🔒 SSL seguro</div>
-        <div class="data-bit" style="bottom:15%;right:4%;--d:4.5s;--dd:-0.5s">📱 Mobile first</div>
-
-        <div class="web-mock">
-          <div class="web-mock-screen">
-            <div class="mock-bar">
-              <div class="mock-dots"><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div></div>
-              <div class="mock-url" id="mock-url">primecode.ec</div>
-            </div>
-            <div class="mock-body">
-              <div class="mock-hero-block">
-                <div class="mock-hero-glow"></div>
-                <div class="mock-hero-text">
-                  <div class="mock-ht">Tu negocio<br><span>online</span></div>
-                </div>
-              </div>
-              <div class="mock-rows">
-                <div class="mock-row"></div>
-                <div class="mock-row"></div>
-                <div class="mock-row"></div>
-              </div>
-              <div class="mock-cards">
-                <div class="mock-card"></div>
-                <div class="mock-card"></div>
-              </div>
-              <div class="mock-btn-wrap">
-                <div class="mock-cta">Contáctanos</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Progress ring -->
-        <div style="position:absolute;bottom:2rem;right:2rem;text-align:right">
-          <div style="font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,229,255,0.3);font-weight:700;margin-bottom:4px" id="quiz-pct">0% completado</div>
-          <div style="width:120px;height:3px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden">
-            <div style="height:100%;background:#00e5ff;border-radius:3px;transition:width 0.4s ease;width:0%" id="quiz-bar"></div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -1051,6 +988,38 @@ function fq(btn){
   document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0'});
   if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
 }
+
+/* PORTFOLIO mouse tilt + click */
+document.querySelectorAll('.pc').forEach(card=>{
+  const url = card.dataset.url;
+  
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width;
+    const y=(e.clientY-r.top)/r.height;
+    const mx=(x-0.5)*20;
+    const my=(y-0.5)*-20;
+    card.style.transform=`perspective(1000px) rotateY(${mx}deg) rotateX(${my}deg) translateY(-8px) scale(1.02)`;
+    
+    // Glow follows mouse
+    const glow=card.querySelector('.pc-glow');
+    if(glow){glow.style.background=`radial-gradient(circle at ${x*100}% ${y*100}%,rgba(0,229,255,0.12) 0%,transparent 60%)`}
+    
+    // Set CSS vars for light effect
+    card.style.setProperty('--mx',x*100+'%');
+    card.style.setProperty('--my',y*100+'%');
+  });
+  
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+  });
+  
+  card.addEventListener('click',()=>{
+    if(url) window.open(url,'_blank');
+  });
+  
+  card.style.cursor='pointer';
+});
 
 /* QUIZ */
 const answers={};
