@@ -55,7 +55,7 @@ a{text-decoration:none;color:inherit}
 #hero{
   position:relative;width:100%;height:100vh;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-end;
+  align-items:center;justify-content:center;
   overflow:hidden;
 }
 
@@ -96,10 +96,11 @@ a{text-decoration:none;color:inherit}
 /* Hero content — at bottom */
 .hero-c{
   position:relative;z-index:10;
-  width:100%;max-width:1400px;
-  padding:0 5% 80px;
+  width:100%;max-width:860px;
+  padding:0 5% 100px;
   display:flex;flex-direction:column;
-  align-items:flex-start;
+  align-items:center;text-align:center;
+  margin-top:8vh;
 }
 .h-tag{
   display:inline-flex;align-items:center;gap:8px;
@@ -132,9 +133,10 @@ a{text-decoration:none;color:inherit}
   font-size:clamp(0.85rem,1.4vw,1rem);color:rgba(240,240,255,0.45);
   max-width:480px;line-height:1.8;margin-bottom:2rem;font-weight:500;
   opacity:0;animation:fu 1s ease 0.9s forwards;
+  margin-left:auto;margin-right:auto;
 }
 .h-sub strong{color:rgba(240,240,255,0.8);font-weight:700}
-.h-cta-wrap{opacity:0;animation:fu 1s ease 1.1s forwards;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.h-cta-wrap{opacity:0;animation:fu 1s ease 1.1s forwards;display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
 .h-cta{
   display:inline-flex;align-items:center;gap:12px;
   padding:18px 44px;border-radius:60px;
@@ -522,7 +524,7 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
   <div class="hero-video-wrap">
     <div class="hero-fallback"></div>
     <iframe
-      src="https://player.cloudinary.com/embed/?cloud_name=dx4j0qpy8&public_id=hero_tg9lxi&autoplay=true&muted=true&loop=true&controls=false&background=true"
+      src="https://player.cloudinary.com/embed/?cloud_name=dx4j0qpy8&public_id=hero_tg9lxi&autoplay=true&muted=true&loop=true&controls=false&background=true&autoplay_on_load=true&quality=auto"
       allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
       allowfullscreen
       frameborder="0">
