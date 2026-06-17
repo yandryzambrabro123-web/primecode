@@ -103,7 +103,7 @@ a{text-decoration:none;color:inherit}
 .hero-c{
   position:relative;z-index:10;
   width:100%;max-width:900px;
-  padding:40px 5% 80px;
+  padding:20px 5% 60px;
   display:flex;flex-direction:column;
   align-items:center;text-align:center;
   background:linear-gradient(to bottom,#050508,#08080f);
@@ -512,6 +512,26 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
 @media(max-width:900px){.nav-links,.nav-cta{display:none}.ham{display:flex}.ft-top{flex-direction:column;align-items:flex-start}.ft-bot{flex-direction:column;align-items:flex-start}.cta-feats{justify-content:flex-start;gap:1.25rem}.faq-sticky{position:relative;top:0}}
 @media(max-width:600px){.sec{padding:100px 5%}.h-title{font-size:3.2rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* FAQ boxes */
+.faq-box{
+  background:#08080f;
+  padding:2rem;
+  transition:background 0.3s;
+}
+.faq-box:hover{background:#0d0d1a}
+.faq-box-icon{font-size:1.5rem;margin-bottom:0.75rem}
+.faq-box-q{
+  font-size:0.92rem;font-weight:800;color:#f0f0ff;
+  margin-bottom:0.5rem;letter-spacing:-0.01em;line-height:1.3;
+}
+.faq-box-a{
+  font-size:0.8rem;color:rgba(240,240,255,0.38);
+  line-height:1.7;font-weight:500;
+}
+@media(max-width:600px){
+  #faq .sec-in > div:nth-child(4){grid-template-columns:1fr!important}
+}
 </style>
 </head>
 <body>
@@ -690,201 +710,51 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<div class="div"></div>
-<section id="portfolio" class="sec">
-  <div class="sec-in">
-    <div class="ey rv">Portafolio</div>
-    <h2 class="st rv d1">Proyectos que<br><em>hablan solos.</em></h2>
-    <p class="ss rv d2">Webs reales entregadas a clientes reales en Ecuador y LATAM. Hover para explorar.</p>
-    <div class="port-grid">
-
-      <!-- BENDERAM - BIG -->
-      <div class="pc pc-1 rv d1" data-url="https://benderam.com">
-        <div class="pc-prev" id="prev-benderam">
-          <div class="pc-glow"></div>
-          <!-- Video placeholder - reemplazar src con video real -->
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
-              <div class="pc-domain">benderam.com</div>
-              <div class="pc-video-tag">+ Video próximamente</div>
-            </div>
-          </div>
-          <span class="pc-chip">Red de Apuestas</span>
-          <div class="pc-hover-cta">
-            <span>Visitar sitio</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </div>
-        </div>
-        <div class="pc-info">
-          <div class="pc-name">Benderam</div>
-          <div class="pc-url">benderam.com</div>
-        </div>
-      </div>
-
-      <!-- DIABLITOBET -->
-      <div class="pc pc-2 rv d2" data-url="https://www.agenciadiablitobet.com">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#0f0510,#180518)">
-          <div class="pc-glow"></div>
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-              <div class="pc-domain">agenciadiablitobet.com</div>
-            </div>
-          </div>
-          <span class="pc-chip">Landing Page</span>
-          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-        </div>
-        <div class="pc-info"><div class="pc-name">DiablitoBet</div><div class="pc-url">agenciadiablitobet.com</div></div>
-      </div>
-
-      <!-- DJ FRANZ -->
-      <div class="pc pc-3 rv d3" data-url="https://www.djfranzofficial.com">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080810,#101018)">
-          <div class="pc-glow"></div>
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg></div>
-              <div class="pc-domain">djfranzofficial.com</div>
-            </div>
-          </div>
-          <span class="pc-chip">Artístico</span>
-          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-        </div>
-        <div class="pc-info"><div class="pc-name">DJ Franz Official</div><div class="pc-url">djfranzofficial.com</div></div>
-      </div>
-
-      <!-- PROYECTO SOLIDARIO -->
-      <div class="pc pc-4 rv d4" data-url="https://www.proyectosolidaridadec.com">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080f0a,#0f1810)">
-          <div class="pc-glow"></div>
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-              <div class="pc-domain">proyectosolidaridadec.com</div>
-            </div>
-          </div>
-          <span class="pc-chip">Plataforma</span>
-          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-        </div>
-        <div class="pc-info"><div class="pc-name">Proyecto Solidario EC</div><div class="pc-url">proyectosolidaridadec.com</div></div>
-      </div>
-
-      <!-- DAULEBET -->
-      <div class="pc pc-5 rv d5" data-url="https://www.daulebet.com">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#0a0508,#160a10)">
-          <div class="pc-glow"></div>
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-              <div class="pc-domain">daulebet.com</div>
-            </div>
-          </div>
-          <span class="pc-chip">Apuestas</span>
-          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-        </div>
-        <div class="pc-info"><div class="pc-name">DauleBet</div><div class="pc-url">daulebet.com</div></div>
-      </div>
-
-      <!-- BAHIA -->
-      <div class="pc pc-6 rv d1" data-url="https://bahia-solutions-opal.vercel.app/">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080810,#101018)">
-          <div class="pc-glow"></div>
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
-              <div class="pc-domain">bahia-solutions</div>
-            </div>
-          </div>
-          <span class="pc-chip">Legal</span>
-          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-        </div>
-        <div class="pc-info"><div class="pc-name">Bahia Solutions</div><div class="pc-url">bahia-solutions.vercel.app</div></div>
-      </div>
-
-      <!-- ANGEOMOVIL -->
-      <div class="pc pc-7 rv d2" data-url="https://www.angeomovil.online">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#050a10,#0a1018)">
-          <div class="pc-glow"></div>
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-              <div class="pc-domain">angeomovil.online</div>
-            </div>
-          </div>
-          <span class="pc-chip">Digital</span>
-          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-        </div>
-        <div class="pc-info"><div class="pc-name">Angeomovil</div><div class="pc-url">angeomovil.online</div></div>
-      </div>
-
-      <!-- MAX INVERSO -->
-      <div class="pc pc-8 rv d3" data-url="https://www.maxinverso.com">
-        <div class="pc-prev" style="background:linear-gradient(135deg,#080a05,#101505)">
-          <div class="pc-glow"></div>
-          <div class="pc-video-placeholder">
-            <div class="pc-icon-wrap">
-              <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-              <div class="pc-domain">maxinverso.com</div>
-            </div>
-          </div>
-          <span class="pc-chip">Finanzas</span>
-          <div class="pc-hover-cta"><span>Visitar sitio</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-        </div>
-        <div class="pc-info"><div class="pc-name">Max Inverso</div><div class="pc-url">maxinverso.com</div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- TECH -->
-<div class="div"></div>
-<section id="tech" class="sec">
-  <div class="sec-in">
-    <div class="ey rv" style="justify-content:center">Stack Tecnológico</div>
-    <h2 class="st rv d1" style="text-align:center">Construido con lo<br>mejor del <em>mercado.</em></h2>
-    <div class="tech-pills rv d2">
-      <div class="tp" style="--d:4s;--dd:0s"><span class="tp-d"></span>Next.js 15</div>
-      <div class="tp" style="--d:5s;--dd:-1s"><span class="tp-d"></span>React 19</div>
-      <div class="tp" style="--d:6s;--dd:-2s"><span class="tp-d"></span>TypeScript</div>
-      <div class="tp" style="--d:4.5s;--dd:-0.5s"><span class="tp-d"></span>Tailwind CSS</div>
-      <div class="tp" style="--d:5.5s;--dd:-1.5s"><span class="tp-d"></span>Framer Motion</div>
-      <div class="tp" style="--d:4s;--dd:-2.5s"><span class="tp-d"></span>Vercel</div>
-      <div class="tp" style="--d:6s;--dd:0s"><span class="tp-d"></span>Supabase</div>
-      <div class="tp" style="--d:5s;--dd:-0.8s"><span class="tp-d"></span>Meta Pixel</div>
-      <div class="tp" style="--d:4.5s;--dd:-1.8s"><span class="tp-d"></span>WhatsApp API</div>
-      <div class="tp" style="--d:5.5s;--dd:-2.2s"><span class="tp-d"></span>Google Analytics</div>
-      <div class="tp" style="--d:4s;--dd:-0.3s"><span class="tp-d"></span>OpenAI / IA</div>
-      <div class="tp" style="--d:6s;--dd:-1.2s"><span class="tp-d"></span>Stripe</div>
-      <div class="tp" style="--d:5s;--dd:-2.8s"><span class="tp-d"></span>Node.js</div>
-      <div class="tp" style="--d:4.5s;--dd:-0.7s"><span class="tp-d"></span>HTML · CSS · JS</div>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <div class="div"></div>
 <section id="faq" class="sec">
   <div class="sec-in">
-    <div class="faq-grid">
-      <div class="faq-sticky">
-        <div class="ey rv">FAQ</div>
-        <h2 class="st rv d1">Preguntas<br><em>frecuentes.</em></h2>
-        <p class="ss rv d2" style="margin-bottom:2rem">Todo lo que necesitas saber antes de dar el paso.</p>
-        <a href="https://wa.me/593963852803" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:0.82rem;color:#00e5ff;font-weight:700;transition:opacity 0.2s" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
-          ¿Otra pregunta? Escríbenos →
-        </a>
+    <div style="text-align:center;margin-bottom:4rem">
+      <div class="ey rv" style="justify-content:center">FAQ</div>
+      <h2 class="st rv d1" style="text-align:center">Preguntas<br><em>frecuentes.</em></h2>
+      <p class="ss rv d2" style="max-width:480px;margin:0 auto">Todo lo que necesitas saber antes de dar el paso.</p>
+    </div>
+    <div style="max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.08);border-radius:20px;overflow:hidden">
+      <div class="faq-box rv d1">
+        <div class="faq-box-icon">🛡️</div>
+        <div class="faq-box-q">¿De verdad no pago hasta ver la web?</div>
+        <div class="faq-box-a">El pago se realiza cuando la web está entre un 65-70% completada y puedes verla funcionando. Nunca pagas por algo que no has visto ni aprobado.</div>
       </div>
-      <div class="faq-list rv d2">
-        <div class="faq-item"><button class="faq-q" onclick="fq(this)">¿De verdad no pago hasta ver la web?<span class="faq-qi">+</span></button><div class="faq-a"><div class="faq-ai">El pago se realiza cuando la web está entre un 65-70% completada y tú puedes verla funcionando. En ese momento pagas para que terminemos los detalles finales. Nunca pagas por algo que no has visto ni aprobado.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="fq(this)">¿Cuánto tiempo tarda la entrega?<span class="faq-qi">+</span></button><div class="faq-a"><div class="faq-ai">Landing Pages: 7-10 días. Sitios Corporativos: 14-21 días. E-commerce: 21-30 días. Plataformas: 30-60 días. Siempre con fecha acordada desde el inicio.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="fq(this)">¿Qué pasa en la reunión inicial?<span class="faq-qi">+</span></button><div class="faq-a"><div class="faq-ai">1 hora donde hablamos de todo: diseño, funcionalidades, objetivos y presupuesto. Al finalizar te enviamos una proforma detallada en 24 horas. Sin presión, sin compromiso.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="fq(this)">¿La web queda en mi propiedad?<span class="faq-qi">+</span></button><div class="faq-a"><div class="faq-ai">100% tuya. Código fuente, credenciales y documentación completa. Sin mensualidades forzadas ni dependencia de nosotros.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="fq(this)">¿Trabajan fuera de Ecuador?<span class="faq-qi">+</span></button><div class="faq-a"><div class="faq-ai">Sí, con clientes de toda Latinoamérica. El proceso es 100% remoto — Google Meet, previsualización online y entrega digital.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="fq(this)">¿Qué incluye el deploy?<span class="faq-qi">+</span></button><div class="faq-a"><div class="faq-ai">Publicamos tu web en Vercel con tu dominio propio, configuramos Google Analytics, Meta Pixel y WhatsApp. Todo listo para recibir clientes desde el día 1.</div></div></div>
+      <div class="faq-box rv d2">
+        <div class="faq-box-icon">⏱️</div>
+        <div class="faq-box-q">¿Cuánto tiempo tarda la entrega?</div>
+        <div class="faq-box-a">Landing Pages: 7-10 días. Corporativos: 14-21 días. E-commerce: 21-30 días. Plataformas: 30-60 días. Siempre con fecha acordada.</div>
       </div>
+      <div class="faq-box rv d3">
+        <div class="faq-box-icon">📋</div>
+        <div class="faq-box-q">¿Qué pasa en la reunión inicial?</div>
+        <div class="faq-box-a">1 hora donde hablamos de diseño, funcionalidades, objetivos y presupuesto. Al finalizar recibes una proforma detallada en 24 horas.</div>
+      </div>
+      <div class="faq-box rv d4">
+        <div class="faq-box-icon">💻</div>
+        <div class="faq-box-q">¿La web queda en mi propiedad?</div>
+        <div class="faq-box-a">100% tuya. Código fuente, credenciales y documentación completa. Sin mensualidades forzadas ni dependencia de nosotros.</div>
+      </div>
+      <div class="faq-box rv d5">
+        <div class="faq-box-icon">🌎</div>
+        <div class="faq-box-q">¿Trabajan fuera de Ecuador?</div>
+        <div class="faq-box-a">Sí, con clientes de toda Latinoamérica. Proceso 100% remoto — Google Meet, previsualización online y entrega digital.</div>
+      </div>
+      <div class="faq-box rv d6">
+        <div class="faq-box-icon">🚀</div>
+        <div class="faq-box-q">¿Qué incluye el deploy?</div>
+        <div class="faq-box-a">Publicamos en Vercel con tu dominio, configuramos Analytics, Meta Pixel y WhatsApp. Todo listo para recibir clientes desde el día 1.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="https://wa.me/593963852803" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:0.82rem;color:rgba(0,229,255,0.6);font-weight:700;transition:color 0.2s" onmouseover="this.style.color='#00e5ff'" onmouseout="this.style.color='rgba(0,229,255,0.6)'">
+        ¿Otra pregunta? Escríbenos por WhatsApp →
+      </a>
     </div>
   </div>
 </section>
@@ -914,7 +784,7 @@ footer{background:#030306;border-top:1px solid rgba(255,255,255,0.04);padding:3r
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER --><!-- FOOTER -->
 <footer>
   <div class="ft">
     <div class="ft-top">
